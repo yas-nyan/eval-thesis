@@ -10,13 +10,16 @@ DYNAMIC_PEERS:
     AFI_SAFIS:
       - NAME: ipv6-unicast
     CLIENT_RANGE: "2001:200:0:8831:1::/80"
+    ROUTE_REFLECTOR_CLUSTER_ID: "1.1.1.1"
   - NAME: siit-pod2
     AS_NUMBER: 2500
     AFI_SAFIS:
       - NAME: ipv6-unicast
     CLIENT_RANGE: "2001:200:0:8831:2::/80"
+    ROUTE_REFLECTOR_CLUSTER_ID: "1.1.1.1"
   - NAME: siit-br
     AS_NUMBER: 2500
     AFI_SAFIS:
       - NAME: ipv6-unicast
     CLIENT_RANGE: "2001:200:0:8831:cafe::/80"
+    ROUTE_REFLECTOR_CLUSTER_ID: "1.1.1.1"

@@ -3,8 +3,22 @@
   git:
     repo: "git@github.com:yas-nyan/siit-manipulatord.git"
     dest: /home/ubuntu/siit-manipulatord
+    version: origin/master
+    accept_hostkey: yes
+    force: yes
 
-- name: restart supervisord
+- name: copy supervisord.conf
+  copy:
+    src: supervisord.conf
+    dest: /etc/supervisor/conf.d/siit-manipulatord.conf
+
+- name: reread supervisord.conf
+  supervisorctl:
+    name: siit-manipulatord
+    state: present
+
+- name: restart siit-manipulatord
   supervisorctl:
     name: siit-manipulatord
     state: restarted
+#- import_tasks: kill.yml
