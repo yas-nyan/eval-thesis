@@ -4,3 +4,4 @@
   roles:
     - gobgp
     - frr
+    - manipulatord

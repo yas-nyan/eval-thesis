@@ -1,0 +1,10 @@
+- name: git clone new version
+  become: no
+  git:
+    repo: "git@github.com:yas-nyan/siit-manipulatord.git"
+    dest: /home/ubuntu/siit-manipulatord
+
+- name: restart supervisord
+  supervisorctl:
+    name: siit-manipulatord
+    state: restarted
