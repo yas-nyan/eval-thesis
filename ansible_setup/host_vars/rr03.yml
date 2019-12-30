@@ -1,0 +1,19 @@
+GOBGP_VERSION: 2.11.0
+AS_NUMBER: 2500
+ROUTER_ID: "202.0.73.43"
+# PEERS:
+# - ADDRESS: "2001:200:0:8831:feee:caca:0:1"
+#   AS_NUMBER: 2500
+#   ROUTE_REFLECTOR_CLIENT: False
+#   AFI_SAFIS:
+#     - NAME: ipv6-unicast
+# - ADDRESS: "2001:200:0:8831:feee:caca:0:2"
+#   AS_NUMBER: 2500
+#   ROUTE_REFLECTOR_CLIENT: False
+#   AFI_SAFIS:
+#     - NAME: ipv6-unicast
+# - ADDRESS: "2001:200:0:8831:feee:caca:0:4"
+#   AS_NUMBER: 2500
+#   ROUTE_REFLECTOR_CLIENT: False
+#   AFI_SAFIS:
+#     - NAME: ipv6-unicast

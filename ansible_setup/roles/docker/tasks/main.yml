@@ -1,0 +1,32 @@
+- name: install python-docker
+  pip:
+    name: docker
+    executable: pip3
+
+- name: Create bridge network for Containers
+  docker_network:
+    name: service_net
+    enable_ipv6: yes
+    ipam_config:
+      - subnet: "{{ POD_NETWORK }}{{ POD_PREFIX }}"
+    state: present
+
+- name: Create Containers
+  docker_container:
+    name: "{{ item.NAME }}"
+    image: siit_gobgpd
+    state: started
+    auto_remove: yes
+    networks:
+      - ipv6_address: "{{ POD_NETWORK }}{{ item.ROUTER_ID }}"
+        name: service_net
+    env:
+      ROUTER_ID: "{{ item.ROUTER_ID }}"
+      AS_NUMBER: "{{ AS_NUMBER }} "
+      IS_RR: "false"
+      RR_ADDRESS1: "{{ RR_ADDRESS1 }}"
+      RR_ADDRESS2: "{{ RR_ADDRESS2 }}"
+      RR_ADDRESS3: "{{ RR_ADDRESS3 }}"
+      RR_ADDRESS4: "{{ RR_ADDRESS4 }}"
+      TRANSLATION_PREFIX: "{{ TRANSLATION_PREFIX }}"
+  loop: "{{ SERVERS }}"

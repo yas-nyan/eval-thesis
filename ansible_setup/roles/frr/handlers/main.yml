@@ -1,0 +1,16 @@
+- name: full restart frr
+  service:
+    name: frr
+    state: restarted
+    enabled: true
+  become: true
+  ignore_errors: true
+  listen: "restart frr"
+
+- name: start frr
+  service:
+    name: frr
+    state: started
+    enabled: true
+  become: true
+  listen: "start frr"

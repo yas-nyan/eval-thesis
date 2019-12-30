@@ -1,0 +1,22 @@
+GOBGP_VERSION: 2.11.0
+AS_NUMBER: 2500
+# ROUTER_ID: "202.0.73.4"
+
+PEERS: []
+
+DYNAMIC_PEERS:
+  - NAME: siit-pod1
+    AS_NUMBER: 2500
+    AFI_SAFIS:
+      - NAME: ipv6-unicast
+    CLIENT_RANGE: "2001:200:0:8831:1::/80"
+  - NAME: siit-pod2
+    AS_NUMBER: 2500
+    AFI_SAFIS:
+      - NAME: ipv6-unicast
+    CLIENT_RANGE: "2001:200:0:8831:2::/80"
+  - NAME: siit-br
+    AS_NUMBER: 2500
+    AFI_SAFIS:
+      - NAME: ipv6-unicast
+    CLIENT_RANGE: "2001:200:0:8831:cafe::/80"

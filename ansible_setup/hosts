@@ -1,0 +1,41 @@
+[route_reflectors]
+rr01        ansible_host=rr01.sfc.wide.ad.jp
+rr02        ansible_host=rr02.sfc.wide.ad.jp
+rr03        ansible_host=rr03.sfc.wide.ad.jp
+rr04        ansible_host=rr04.sfc.wide.ad.jp
+
+[pods]
+pod1        ansible_host=pod1.sfc.wide.ad.jp
+pod2        ansible_host=pod2.sfc.wide.ad.jp
+
+[brs]
+br01 ansible_host=202.0.73.51 ROUTER_ID=202.0.73.51
+br02 ansible_host=202.0.73.52 ROUTER_ID=202.0.73.52
+br03 ansible_host=202.0.73.53 ROUTER_ID=202.0.73.53
+br04 ansible_host=202.0.73.54 ROUTER_ID=202.0.73.54
+br05 ansible_host=202.0.73.55 ROUTER_ID=202.0.73.55
+br06 ansible_host=202.0.73.56 ROUTER_ID=202.0.73.56
+br07 ansible_host=202.0.73.57 ROUTER_ID=202.0.73.57
+br08 ansible_host=202.0.73.58 ROUTER_ID=202.0.73.58
+br09 ansible_host=202.0.73.59 ROUTER_ID=202.0.73.59
+br10 ansible_host=202.0.73.60 ROUTER_ID=202.0.73.60
+br11 ansible_host=202.0.73.61 ROUTER_ID=202.0.73.61
+br12 ansible_host=202.0.73.62 ROUTER_ID=202.0.73.62
+br13 ansible_host=202.0.73.63 ROUTER_ID=202.0.73.63
+br14 ansible_host=202.0.73.64 ROUTER_ID=202.0.73.64
+br15 ansible_host=202.0.73.65 ROUTER_ID=202.0.73.65
+br16 ansible_host=202.0.73.66 ROUTER_ID=202.0.73.66
+br17 ansible_host=202.0.73.67 ROUTER_ID=202.0.73.67
+br18 ansible_host=202.0.73.68 ROUTER_ID=202.0.73.68
+br19 ansible_host=202.0.73.69 ROUTER_ID=202.0.73.69
+br20 ansible_host=202.0.73.70 ROUTER_ID=202.0.73.70
+br21 ansible_host=202.0.73.71 ROUTER_ID=202.0.73.71
+br22 ansible_host=202.0.73.72 ROUTER_ID=202.0.73.72
+br23 ansible_host=202.0.73.73 ROUTER_ID=202.0.73.73
+br24 ansible_host=202.0.73.74 ROUTER_ID=202.0.73.74
+br25 ansible_host=202.0.73.75 ROUTER_ID=202.0.73.75
+br26 ansible_host=202.0.73.76 ROUTER_ID=202.0.73.76
+br27 ansible_host=202.0.73.77 ROUTER_ID=202.0.73.77
+br28 ansible_host=202.0.73.78 ROUTER_ID=202.0.73.78
+br29 ansible_host=202.0.73.79 ROUTER_ID=202.0.73.79
+br30 ansible_host=202.0.73.80 ROUTER_ID=202.0.73.80

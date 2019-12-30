@@ -1,0 +1,121 @@
+SERVERS:
+  - NAME: server01-01
+    ROUTER_ID: 202.0.73.128
+  - NAME: server01-02
+    ROUTER_ID: 202.0.73.129
+  - NAME: server01-03
+    ROUTER_ID: 202.0.73.130
+  - NAME: server01-04
+    ROUTER_ID: 202.0.73.131
+  - NAME: server01-05
+    ROUTER_ID: 202.0.73.132
+  - NAME: server01-06
+    ROUTER_ID: 202.0.73.133
+  - NAME: server01-07
+    ROUTER_ID: 202.0.73.134
+  - NAME: server01-08
+    ROUTER_ID: 202.0.73.135
+  - NAME: server01-09
+    ROUTER_ID: 202.0.73.136
+  - NAME: server01-10
+    ROUTER_ID: 202.0.73.137
+  - NAME: server01-11
+    ROUTER_ID: 202.0.73.138
+  - NAME: server01-12
+    ROUTER_ID: 202.0.73.139
+  - NAME: server01-13
+    ROUTER_ID: 202.0.73.140
+  - NAME: server01-14
+    ROUTER_ID: 202.0.73.141
+  - NAME: server01-15
+    ROUTER_ID: 202.0.73.142
+  - NAME: server01-16
+    ROUTER_ID: 202.0.73.143
+  - NAME: server01-17
+    ROUTER_ID: 202.0.73.144
+  - NAME: server01-18
+    ROUTER_ID: 202.0.73.145
+  - NAME: server01-19
+    ROUTER_ID: 202.0.73.146
+  - NAME: server01-20
+    ROUTER_ID: 202.0.73.147
+  - NAME: server01-21
+    ROUTER_ID: 202.0.73.148
+  - NAME: server01-22
+    ROUTER_ID: 202.0.73.149
+  - NAME: server01-23
+    ROUTER_ID: 202.0.73.150
+  - NAME: server01-24
+    ROUTER_ID: 202.0.73.151
+  - NAME: server01-25
+    ROUTER_ID: 202.0.73.152
+  - NAME: server01-26
+    ROUTER_ID: 202.0.73.153
+  - NAME: server01-27
+    ROUTER_ID: 202.0.73.154
+  - NAME: server01-28
+    ROUTER_ID: 202.0.73.155
+  - NAME: server01-29
+    ROUTER_ID: 202.0.73.156
+  - NAME: server01-30
+    ROUTER_ID: 202.0.73.157
+  - NAME: server01-31
+    ROUTER_ID: 202.0.73.158
+  - NAME: server01-32
+    ROUTER_ID: 202.0.73.159
+  - NAME: server01-33
+    ROUTER_ID: 202.0.73.160
+  - NAME: server01-34
+    ROUTER_ID: 202.0.73.161
+  - NAME: server01-35
+    ROUTER_ID: 202.0.73.162
+  - NAME: server01-36
+    ROUTER_ID: 202.0.73.163
+  - NAME: server01-37
+    ROUTER_ID: 202.0.73.164
+  - NAME: server01-38
+    ROUTER_ID: 202.0.73.165
+  - NAME: server01-39
+    ROUTER_ID: 202.0.73.166
+  - NAME: server01-40
+    ROUTER_ID: 202.0.73.167
+  - NAME: server01-41
+    ROUTER_ID: 202.0.73.168
+  - NAME: server01-42
+    ROUTER_ID: 202.0.73.169
+  - NAME: server01-43
+    ROUTER_ID: 202.0.73.170
+  - NAME: server01-44
+    ROUTER_ID: 202.0.73.171
+  - NAME: server01-45
+    ROUTER_ID: 202.0.73.172
+  - NAME: server01-46
+    ROUTER_ID: 202.0.73.173
+  - NAME: server01-47
+    ROUTER_ID: 202.0.73.174
+  - NAME: server01-48
+    ROUTER_ID: 202.0.73.175
+  - NAME: server01-49
+    ROUTER_ID: 202.0.73.176
+  - NAME: server01-50
+    ROUTER_ID: 202.0.73.177
+  - NAME: server01-51
+    ROUTER_ID: 202.0.73.178
+  - NAME: server01-52
+    ROUTER_ID: 202.0.73.179
+  - NAME: server01-53
+    ROUTER_ID: 202.0.73.180
+  - NAME: server01-54
+    ROUTER_ID: 202.0.73.181
+  - NAME: server01-55
+    ROUTER_ID: 202.0.73.182
+  - NAME: server01-56
+    ROUTER_ID: 202.0.73.183
+  - NAME: server01-57
+    ROUTER_ID: 202.0.73.184
+  - NAME: server01-58
+    ROUTER_ID: 202.0.73.185
+  - NAME: server01-59
+    ROUTER_ID: 202.0.73.186
+  - NAME: server01-60
+    ROUTER_ID: 202.0.73.187

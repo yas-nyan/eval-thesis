@@ -1,0 +1,5 @@
+---
+- hosts: route_reflectors
+  become: true
+  roles:
+    - gobgp

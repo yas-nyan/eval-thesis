@@ -1,0 +1,6 @@
+---
+- hosts: brs
+  become: true
+  roles:
+    - gobgp
+    - frr

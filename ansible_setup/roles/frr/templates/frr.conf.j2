@@ -1,0 +1,27 @@
+frr version 6.0.3
+frr defaults traditional
+hostname {{ inventory_hostname_short }}
+log syslog informational
+service integrated-vtysh-config
+!
+debug ospf6 neighbor
+!
+ip route {{ IPV4_SERVICE_POOL }} Null0
+ipv6 route {{ TRANSLATION_PREFIX }} Null0
+!
+interface {{ OSPF_IF_NAME }}
+ ip ospf area {{ OSPF_V2_AREA }}
+!
+router ospf
+ ospf router-id {{ ROUTER_ID }}
+ redistribute static
+ area {{ OSPF_V2_AREA }} range {{ OSPF_V2_NETWORK }}
+!
+router ospf6
+ ospf6 router-id {{ ROUTER_ID }}
+ redistribute static
+ area {{ OSPF_V3_AREA }} range {{ OSPF_V3_NETWORK }}
+ interface ens192 area {{ OSPF_V3_AREA }}
+!
+line vty
+!

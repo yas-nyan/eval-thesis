@@ -1,0 +1,5 @@
+SERVERS:
+{%- for server in servers %}
+  - NAME: {{ server.name }}
+    ROUTER_ID: {{ server.router_id }}
+{%- endfor %}

@@ -1,0 +1,10 @@
+---
+- hosts: pods
+  become: true
+  pre_tasks:
+    - name: Install pip
+      raw: bash -c "test -e /usr/bin/pip3 || (apt -qqy update && apt install -qqy python3-pip )"
+      register: output
+      changed_when: output.stdout != ""
+  roles:
+    - docker
