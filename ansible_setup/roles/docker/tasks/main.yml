@@ -11,6 +11,44 @@
       - subnet: "{{ POD_NETWORK }}{{ POD_PREFIX }}"
     state: present
 
+- name: git clone new version
+  become: no
+  git:
+    repo: "git@github.com:yas-nyan/siit-client-docker.git"
+    dest: /home/ubuntu/siit-client-docker
+    version: origin/master
+    accept_hostkey: yes
+    force: yes
+- name: create image
+  docker_image:
+    build:
+      path: /home/ubuntu/siit-client-docker
+    name: siit_gobgpd
+    source: build
+    state: present
+    force_source: yes
+
+- name: crate injector
+  docker_container:
+    name: "{{ item.NAME }}"
+    image: siit_gobgpd
+    state: started
+    auto_remove: yes
+    networks:
+      - ipv6_address: "{{ POD_NETWORK }}{{ item.ROUTER_ID }}"
+        name: service_net
+    env:
+      ROUTER_ID: "{{ item.ROUTER_ID }}"
+      AS_NUMBER: "{{ AS_NUMBER }} "
+      IS_RR: "false"
+      IS_INJECTOR: "true"
+      RR_ADDRESS1: "{{ RR_ADDRESS1 }}"
+      RR_ADDRESS2: "{{ RR_ADDRESS2 }}"
+      RR_ADDRESS3: "{{ RR_ADDRESS3 }}"
+      RR_ADDRESS4: "{{ RR_ADDRESS4 }}"
+      TRANSLATION_PREFIX: "{{ TRANSLATION_PREFIX }}"
+  loop: "{{ INJECTORS }}"
+
 - name: Create Containers
   docker_container:
     name: "{{ item.NAME }}"
@@ -24,6 +62,7 @@
       ROUTER_ID: "{{ item.ROUTER_ID }}"
       AS_NUMBER: "{{ AS_NUMBER }} "
       IS_RR: "false"
+      IS_INJECTOR: "false"
       RR_ADDRESS1: "{{ RR_ADDRESS1 }}"
       RR_ADDRESS2: "{{ RR_ADDRESS2 }}"
       RR_ADDRESS3: "{{ RR_ADDRESS3 }}"
