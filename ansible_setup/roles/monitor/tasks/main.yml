@@ -1,0 +1,31 @@
+- name: locate monitor script
+  copy:
+    src: monitor.sh
+    dest: /opt/monitor.sh
+    mode: "0755"
+
+- name: copy monitor.conf
+  copy:
+    src: monitor.conf
+    dest: /etc/supervisor/conf.d/monitor.conf
+
+- name: reread supervisord.conf
+  supervisorctl:
+    name: monitor
+    state: present
+
+- name: copy log
+  fetch:
+    src: /var/log/supervisor/monitor.log
+    dest: "./backup/{{inventory_hostname}}.csv"
+    flat: yes
+
+- name: delete old log
+  file:
+    path: /var/log/supervisor/monitor.log
+    state: absent
+
+- name: restart monitor
+  supervisorctl:
+    name: monitor
+    state: started
