@@ -28,4 +28,4 @@
 - name: restart monitor
   supervisorctl:
     name: monitor
-    state: started
+    state: restarted
