@@ -42,6 +42,7 @@
       AS_NUMBER: "{{ AS_NUMBER }} "
       IS_RR: "false"
       IS_INJECTOR: "true"
+      INJECT_COUNT: "{{ item.INJECT_COUNT }}"
       RR_ADDRESS1: "{{ RR_ADDRESS1 }}"
       RR_ADDRESS2: "{{ RR_ADDRESS2 }}"
       RR_ADDRESS3: "{{ RR_ADDRESS3 }}"
