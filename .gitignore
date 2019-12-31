@@ -1,2 +1,3 @@
 br/cloud-init/build
 br/cloud-init/tmp
+ansible_setup/backup/
