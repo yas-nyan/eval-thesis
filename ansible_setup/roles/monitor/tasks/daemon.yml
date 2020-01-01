@@ -1,0 +1,20 @@
+- name: locate monitor script
+  copy:
+    src: monitor.sh
+    dest: /opt/monitor.sh
+    mode: "0755"
+
+- name: copy monitor.conf
+  copy:
+    src: monitor.conf
+    dest: /etc/supervisor/conf.d/monitor.conf
+
+- name: reread supervisord.conf
+  supervisorctl:
+    name: monitor
+    state: present
+
+- name: start monitor
+  supervisorctl:
+    name: monitor
+    state: started

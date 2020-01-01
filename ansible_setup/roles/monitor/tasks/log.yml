@@ -1,0 +1,15 @@
+- name: copy monitor log
+  fetch:
+    src: /var/log/supervisor/monitor.log
+    dest: "./backup/monitor/{{inventory_hostname}}.csv"
+    flat: yes
+
+- name: delete old monitor log
+  file:
+    path: /var/log/supervisor/monitor.log
+    state: absent
+
+- name: restart monitor
+  supervisorctl:
+    name: monitor
+    state: restarted
