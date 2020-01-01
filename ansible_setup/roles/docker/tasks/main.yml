@@ -28,11 +28,12 @@
     state: present
     force_source: yes
 
-- name: crate injector
+- name: crate injector containers with paused state
   docker_container:
     name: "{{ item.NAME }}"
     image: siit_gobgpd
     state: started
+    paused: yes
     auto_remove: yes
     networks:
       - ipv6_address: "{{ POD_NETWORK }}{{ item.ROUTER_ID }}"
@@ -50,11 +51,12 @@
       TRANSLATION_PREFIX: "{{ TRANSLATION_PREFIX }}"
   loop: "{{ INJECTORS }}"
 
-- name: Create Containers
+- name: Create Containers with paused state
   docker_container:
     name: "{{ item.NAME }}"
     image: siit_gobgpd
     state: started
+    paused: yes
     auto_remove: yes
     networks:
       - ipv6_address: "{{ POD_NETWORK }}{{ item.ROUTER_ID }}"
