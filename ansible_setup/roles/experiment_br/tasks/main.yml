@@ -1,6 +1,6 @@
 - name: pause for convergence
   pause:
-    second: "{{ PAUSED_SECONDS }}"
+    seconds: "{{ PAUSED_SECONDS }}"
 
 - name: get eamt now
   shell: jool_siit eamt display --csv --no-headers
