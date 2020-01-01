@@ -1,17 +1,33 @@
-# # サーバー起動
-# - import_playbook: pod1.yml
-
+# サーバー起動
 - hosts: pods
   become: true
   vars:
     CONTAINERS: "{{ SERVERS }} "
+    PAUSED: no
   roles:
     - experiment_pod
 
-# Monitor更新． テスト．
+# EAMTのテスト．
 - hosts: brs
   become: true
   vars:
     STANDARD_EAMT: "{{ lookup('env','PWD') }}/experiment/docker_120.csv"
+    PAUSED_SECONDS: 20
   roles:
     - experiment_br
+
+# サーバー停止
+- hosts: pods
+  become: true
+  vars:
+    CONTAINERS: "{{ SERVERS }} "
+    PAUSED: yes
+  roles:
+    - experiment_pod
+
+# monitor ファイルの更新・取得
+
+- hosts: brs
+  become: true
+  roles:
+    - monitor

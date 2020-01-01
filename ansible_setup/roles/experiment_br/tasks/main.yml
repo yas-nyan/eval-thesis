@@ -1,3 +1,7 @@
+- name: pause for convergence
+  pause:
+    second: "{{ PAUSED_SECONDS }}"
+
 - name: get eamt now
   shell: jool_siit eamt display --csv --no-headers
   register: eamt
@@ -12,6 +16,7 @@
   copy:
     content: "{{ eamt['stdout'] }}"
     dest: "{{ SAVED_EAMT }}"
+    backup: yes
 
 - name: test eamt with STANDARD
   delegate_to: localhost
