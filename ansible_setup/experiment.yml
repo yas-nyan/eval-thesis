@@ -1,0 +1,10 @@
+# # サーバー起動
+# - import_playbook: pod1.yml
+
+# Monitor更新． テスト．
+- hosts: brs
+  become: true
+  vars:
+    STANDARD_EAMT: "{{ lookup('env','PWD') }}/experiment/docker_120.csv"
+  roles:
+    - experiment
