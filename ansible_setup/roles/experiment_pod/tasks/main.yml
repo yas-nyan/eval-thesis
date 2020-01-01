@@ -1,0 +1,21 @@
+- name: start paused target containers
+  docker_container:
+    name: "{{ item.NAME }}"
+    image: siit_gobgpd
+    state: started
+    paused: no
+    auto_remove: yes
+    networks:
+      - ipv6_address: "{{ POD_NETWORK }}{{ item.ROUTER_ID }}"
+        name: service_net
+    env:
+      ROUTER_ID: "{{ item.ROUTER_ID }}"
+      AS_NUMBER: "{{ AS_NUMBER }} "
+      IS_RR: "false"
+      IS_INJECTOR: "false"
+      RR_ADDRESS1: "{{ RR_ADDRESS1 }}"
+      RR_ADDRESS2: "{{ RR_ADDRESS2 }}"
+      RR_ADDRESS3: "{{ RR_ADDRESS3 }}"
+      RR_ADDRESS4: "{{ RR_ADDRESS4 }}"
+      TRANSLATION_PREFIX: "{{ TRANSLATION_PREFIX }}"
+  loop: "{{ CONTAINERS }}"
