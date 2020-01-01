@@ -1,2 +1,17 @@
 ansible_user: ubuntu
 GOBGP_VERSION: 2.11.0
+
+ntp_enabled: true
+ntp_timezone: Asia/Tokyo
+
+ntp_manage_config: false
+
+ntp_area: "jp"
+ntp_servers:
+  - "ntp.nict.ac.jp iburst"
+  - "ntp1.jst.mfeed.ad.jp iburst iburst"
+  - "ntp1.jst.mfeed.ad.jp iburst iburst"
+
+ntp_restrict:
+  - "127.0.0.1"
+  - "::1"

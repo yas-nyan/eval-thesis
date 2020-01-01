@@ -7,4 +7,5 @@
       register: output
       changed_when: output.stdout != ""
   roles:
+    - ntp
     - docker
