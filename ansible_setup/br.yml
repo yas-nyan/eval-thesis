@@ -2,7 +2,8 @@
 - hosts: brs
   become: true
   roles:
-    # - gobgp
-    # - frr
-    # - manipulatord
+    - ntp
+    - gobgp
+    - frr
+    - manipulatord
     - monitor
