@@ -2,5 +2,4 @@
 - hosts: route_reflectors
   become: true
   roles:
-    - ntp
     - gobgp
