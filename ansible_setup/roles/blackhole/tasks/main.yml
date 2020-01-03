@@ -1,0 +1,25 @@
+- name: blackhole route
+  shell: "bash -c 'ip -6  route add blackhole {{ TARGET_ROUTE }} ; date +%s'"
+  register: add_result
+  when: IS_DROP
+
+- name: remove blackhole route
+  shell: "bash -c 'ip -6  route del blackhole {{ TARGET_ROUTE }} ; date +%s'"
+  register: del_result
+  when: not IS_DROP
+
+- name: save to local(add)
+  delegate_to: localhost
+  become: no
+  copy:
+    content: "{{ add_result.stdout }}"
+    dest: "{{ LOG_PATH }}"
+  when: LOG_PATH is defined and IS_DROP
+
+- name: save to local(del)
+  delegate_to: localhost
+  become: no
+  copy:
+    content: "{{ del_result.stdout }}"
+    dest: "{{ LOG_PATH }}"
+  when: LOG_PATH is defined and not IS_DROP

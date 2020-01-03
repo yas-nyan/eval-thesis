@@ -5,14 +5,17 @@
     mode: "0755"
 
 - name: exec monitor sh
-  shell: bash -lc "/home/ubuntu/monitor.sh &"
+  shell: /home/ubuntu/monitor.sh 2> /tmp/monitor_error.log
+  async: 5
+  poll: 0
 
 - name: start containers
   docker_container:
     name: "{{ item.NAME }}"
     image: siit_gobgpd
     state: started
-    paused: no
+    restart: yes
+    recreate: yes
     auto_remove: yes
     networks:
       - ipv6_address: "{{ POD_NETWORK }}{{ item.ROUTER_ID }}"
@@ -28,13 +31,29 @@
   loop: "{{ CONTAINERS }}"
   when: not STOPPED
 
-- name: remove containers
+- name: remove container
   docker_container:
     name: "{{ item.NAME }}"
     image: siit_gobgpd
     state: absent
+    auto_remove: yes
+    networks:
+      - ipv6_address: "{{ POD_NETWORK }}{{ item.ROUTER_ID }}"
+        name: service_net
+    env:
+      ROUTER_ID: "{{ item.ROUTER_ID }}"
+      AS_NUMBER: "{{ AS_NUMBER }} "
+      IS_RR: "false"
+      IS_INJECTOR: "false"
+      RR_ADDRESS1: "{{ RR_ADDRESS1 }}"
+      RR_ADDRESS2: "{{ RR_ADDRESS2 }}"
+      TRANSLATION_PREFIX: "{{ TRANSLATION_PREFIX }}"
   loop: "{{ CONTAINERS }}"
   when: STOPPED
+
+- name: wait docker log
+  pause:
+    seconds: "5"
 
 - name: get docker log
   fetch:

@@ -1,14 +1,17 @@
 - name: pause for convergence
   pause:
     seconds: "{{ PAUSED_SECONDS }}"
+  when: PAUSED_SECONDS is defined
 
 - name: get eamt now
   shell: jool_siit eamt display --csv --no-headers
   register: eamt
+  when: STANDARD_EAMT is defined
 
 - name: set save path to var
   set_fact:
     SAVED_EAMT: "{{ lookup('env','PWD') }}/backup/eamt/{{inventory_hostname}}.csv"
+  when: STANDARD_EAMT is defined
 
 - name: save to local
   delegate_to: localhost
@@ -17,8 +20,26 @@
     content: "{{ eamt['stdout'] }}"
     dest: "{{ SAVED_EAMT }}"
     backup: yes
+  when: STANDARD_EAMT is defined
 
 - name: test eamt with STANDARD
   delegate_to: localhost
   become: no
   command: "{{role_path}}/test/eamt.py {{ STANDARD_EAMT }} {{ SAVED_EAMT }}"
+  when: STANDARD_EAMT is defined
+
+- name: copy monitor log
+  fetch:
+    src: /var/log/supervisor/monitor.log
+    dest: "./backup/monitor/{{inventory_hostname}}.csv"
+    flat: yes
+
+- name: delete old monitor log
+  file:
+    path: /var/log/supervisor/monitor.log
+    state: absent
+
+- name: restart monitor
+  supervisorctl:
+    name: monitor
+    state: restarted
