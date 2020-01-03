@@ -46,8 +46,6 @@
       INJECT_COUNT: "{{ item.INJECT_COUNT }}"
       RR_ADDRESS1: "{{ RR_ADDRESS1 }}"
       RR_ADDRESS2: "{{ RR_ADDRESS2 }}"
-      RR_ADDRESS3: "{{ RR_ADDRESS3 }}"
-      RR_ADDRESS4: "{{ RR_ADDRESS4 }}"
       TRANSLATION_PREFIX: "{{ TRANSLATION_PREFIX }}"
   loop: "{{ INJECTORS }}"
 
@@ -67,7 +65,5 @@
       IS_INJECTOR: "false"
       RR_ADDRESS1: "{{ RR_ADDRESS1 }}"
       RR_ADDRESS2: "{{ RR_ADDRESS2 }}"
-      RR_ADDRESS3: "{{ RR_ADDRESS3 }}"
-      RR_ADDRESS4: "{{ RR_ADDRESS4 }}"
       TRANSLATION_PREFIX: "{{ TRANSLATION_PREFIX }}"
   loop: "{{ SERVERS }}"

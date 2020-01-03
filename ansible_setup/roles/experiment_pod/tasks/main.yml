@@ -1,25 +1,11 @@
-- name: pause containers
-  docker_container:
-    name: "{{ item.NAME }}"
-    image: siit_gobgpd
-    state: started
-    paused: yes
-    auto_remove: yes
-    networks:
-      - ipv6_address: "{{ POD_NETWORK }}{{ item.ROUTER_ID }}"
-        name: service_net
-    env:
-      ROUTER_ID: "{{ item.ROUTER_ID }}"
-      AS_NUMBER: "{{ AS_NUMBER }} "
-      IS_RR: "false"
-      IS_INJECTOR: "false"
-      RR_ADDRESS1: "{{ RR_ADDRESS1 }}"
-      RR_ADDRESS2: "{{ RR_ADDRESS2 }}"
-      RR_ADDRESS3: "{{ RR_ADDRESS3 }}"
-      RR_ADDRESS4: "{{ RR_ADDRESS4 }}"
-      TRANSLATION_PREFIX: "{{ TRANSLATION_PREFIX }}"
-  loop: "{{ CONTAINERS }}"
-  when: PAUSED
+- name: put timer code
+  template:
+    src: monitor.sh.j2
+    dest: /home/ubuntu/monitor.sh
+    mode: "0755"
+
+- name: exec monitor sh
+  shell: bash -lc "/home/ubuntu/monitor.sh &"
 
 - name: start containers
   docker_container:
@@ -38,8 +24,25 @@
       IS_INJECTOR: "false"
       RR_ADDRESS1: "{{ RR_ADDRESS1 }}"
       RR_ADDRESS2: "{{ RR_ADDRESS2 }}"
-      RR_ADDRESS3: "{{ RR_ADDRESS3 }}"
-      RR_ADDRESS4: "{{ RR_ADDRESS4 }}"
       TRANSLATION_PREFIX: "{{ TRANSLATION_PREFIX }}"
   loop: "{{ CONTAINERS }}"
-  when: not PAUSED
+  when: not STOPPED
+
+- name: remove containers
+  docker_container:
+    name: "{{ item.NAME }}"
+    image: siit_gobgpd
+    state: absent
+  loop: "{{ CONTAINERS }}"
+  when: STOPPED
+
+- name: get docker log
+  fetch:
+    src: /home/ubuntu/docker-log.txt
+    dest: "./backup/pod/docker-log.txt"
+    flat: yes
+
+- name: delete old docker log
+  file:
+    path: /home/ubuntu/docker-log.txt
+    state: absent

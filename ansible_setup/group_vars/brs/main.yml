@@ -15,17 +15,16 @@ PEERS:
     AFI_SAFIS:
       - NAME: ipv6-unicast
 
-  - ADDRESS: "2001:200:0:8831:feee:caca:0:3"
-    AS_NUMBER: 2500
-    ROUTE_REFLECTOR_CLIENT: False
-    AFI_SAFIS:
-      - NAME: ipv6-unicast
-
-  - ADDRESS: "2001:200:0:8831:feee:caca:0:4"
-    AS_NUMBER: 2500
-    ROUTE_REFLECTOR_CLIENT: False
-    AFI_SAFIS:
-      - NAME: ipv6-unicast
+  # - ADDRESS: "2001:200:0:8831:feee:caca:0:3"
+  #   AS_NUMBER: 2500
+  #   ROUTE_REFLECTOR_CLIENT: False
+  #   AFI_SAFIS:
+  #     - NAME: ipv6-unicast
+  # - ADDRESS: "2001:200:0:8831:feee:caca:0:4"
+  #   AS_NUMBER: 2500
+  #   ROUTE_REFLECTOR_CLIENT: False
+  #   AFI_SAFIS:
+  #     - NAME: ipv6-unicast
 
 TRANSLATION_PREFIX: 64:ff9b:5322:601::/96
 IPV4_SERVICE_POOLS:
