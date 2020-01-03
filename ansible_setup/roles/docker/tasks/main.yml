@@ -51,12 +51,11 @@
       TRANSLATION_PREFIX: "{{ TRANSLATION_PREFIX }}"
   loop: "{{ INJECTORS }}"
 
-- name: Create Containers with paused state
+- name: Create Containers
   docker_container:
     name: "{{ item.NAME }}"
     image: siit_gobgpd
     state: started
-    paused: yes
     auto_remove: yes
     networks:
       - ipv6_address: "{{ POD_NETWORK }}{{ item.ROUTER_ID }}"
