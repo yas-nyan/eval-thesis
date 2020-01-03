@@ -6,7 +6,9 @@ service integrated-vtysh-config
 !
 debug ospf6 neighbor
 !
-ip route {{ IPV4_SERVICE_POOL }} Null0
+{%- for pool in IPV4_SERVICE_POOLS %}
+ip route {{ pool }} Null0
+{%- endfor %}
 ipv6 route {{ TRANSLATION_PREFIX }} Null0
 !
 interface {{ OSPF_IF_NAME }}
