@@ -1,0 +1,7 @@
+- name: calc convergence time
+  command: "python3 {{role_path}}/test/convergence.py {{ COMPLETE_EAMT_COUNT }}"
+  register: result
+
+- name: show result
+  debug:
+    msg: "{{ result['stdout'] }}"

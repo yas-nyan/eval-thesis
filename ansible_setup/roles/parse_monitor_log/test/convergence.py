@@ -1,5 +1,6 @@
 import pandas as pd
 from datetime import datetime
+import sys
 
 hosts = [f"br{str(i).zfill(2)}" for i in range(1, 31)]
 #filepaths = [ f"backup/deploy_test/{host}.csv" for host in hosts]
@@ -45,6 +46,9 @@ def calc_convergence(merged_df, completed_count):
 
 
 if __name__ == "__main__":
+
+    # get args
+    COMPLETE_EAMT_COUNT = sys.argv[1]
     # get docker started/stopped time
     docker_log_path = "/Users/yas-nyan/Documents/works/eval-thesis/ansible_setup/backup/pod/docker-log.txt"
     standard_time = 0
@@ -69,6 +73,6 @@ if __name__ == "__main__":
     merged = merged.reset_index(drop=True)
     merged = merged.groupby('time').mean()
 
-    convergenced_time = calc_convergence(merged, 257)
+    convergenced_time = calc_convergence(merged, COMPLETE_EAMT_COUNT)
 
     print(convergenced_time)

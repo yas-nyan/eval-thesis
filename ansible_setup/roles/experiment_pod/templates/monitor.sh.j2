@@ -1,7 +1,7 @@
 #!/bin/bash
 while true;
 do
-        count="$(docker ps | grep extra | wc -l)"
+        count="$(docker ps -f status=running -f name=extra -q | wc -l)"
 {% if not STOPPED %}
         if [ $count -eq  1 ]; then
           echo $(date +%s) > /home/ubuntu/docker-log.txt
@@ -13,5 +13,5 @@ do
           break
         fi
 {% endif %}
-        sleep 0.1
+        sleep 0.01
 done
