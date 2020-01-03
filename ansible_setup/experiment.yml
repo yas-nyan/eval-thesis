@@ -1,29 +1,29 @@
-# サーバー起動
-- hosts: pods
-  become: true
-  vars:
-    CONTAINERS: "{{ SERVERS }} "
-    PAUSED: no
-  roles:
-    - experiment_pod
+# # サーバー起動
+# - hosts: pods
+#   become: true
+#   vars:
+#     CONTAINERS: "{{ SERVERS }} "
+#     PAUSED: no
+#   roles:
+#     - experiment_pod
 
 # EAMTのテスト．
 - hosts: brs
   become: true
   vars:
-    STANDARD_EAMT: "{{ lookup('env','PWD') }}/experiment/docker_120.csv"
+    STANDARD_EAMT: "{{ lookup('env','PWD') }}/experiment/docker_512.csv"
     PAUSED_SECONDS: 20
   roles:
     - experiment_br
 
-# サーバー停止
-- hosts: pods
-  become: true
-  vars:
-    CONTAINERS: "{{ SERVERS }} "
-    PAUSED: yes
-  roles:
-    - experiment_pod
+# # サーバー停止
+# - hosts: pods
+#   become: true
+#   vars:
+#     CONTAINERS: "{{ SERVERS }} "
+#     PAUSED: yes
+#   roles:
+#     - experiment_pod
 
 # monitor ファイルの更新・取得
 
