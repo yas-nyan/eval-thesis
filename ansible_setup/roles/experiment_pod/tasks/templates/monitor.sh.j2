@@ -1,0 +1,17 @@
+#!/bin/bash
+while true;
+do
+        count="$(docker ps | grep extra | wc -l)"
+{% if not STOPPED %}
+        if [ $count -eq  1 ]; then
+          echo $(date +%s) > /home/ubuntu/docker-log.txt
+          break
+        fi
+{% else %}
+        if [ $count -eq  0 ]; then
+          echo $(date +%s) > /home/ubuntu/docker-log.txt
+          break
+        fi
+{% endif %}
+        sleep 0.1
+done
