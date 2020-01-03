@@ -1,0 +1,4 @@
+- hosts: brs
+  become: true
+  roles:
+    - monitor
