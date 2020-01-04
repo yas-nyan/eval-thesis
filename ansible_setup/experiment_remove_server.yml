@@ -1,0 +1,39 @@
+# clear log
+- hosts: brs
+  become: true
+  roles:
+    - experiment_br
+
+# 当該コンテナ宛の通信を吸い込む
+- hosts: pod1
+  become: true
+  vars:
+    TARGET_ROUTE: "{{POD_NETWORK}}100.64.255.1/128"
+    LOG_PATH: "./backup/pod/docker-log.txt"
+    IS_DROP: yes
+  roles:
+    - blackhole
+
+# get log
+- hosts: brs
+  become: true
+  vars:
+    PAUSED_SECONDS: 10
+  roles:
+    - experiment_br
+
+- hosts: localhost
+  become: false
+  vars:
+    COMPLETE_EAMT_COUNT: 256
+    LOG_PATH: "./backup/operation/convergence_256_remove.txt"
+  roles:
+    - parse_monitor_log
+# お片付け
+- hosts: pod1
+  become: true
+  vars:
+    TARGET_ROUTE: "{{POD_NETWORK}}100.64.255.1/128"
+    IS_DROP: no
+  roles:
+    - blackhole
