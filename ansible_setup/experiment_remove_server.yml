@@ -25,8 +25,8 @@
 - hosts: localhost
   become: false
   vars:
-    COMPLETE_EAMT_COUNT: 256
-    LOG_PATH: "./backup/operation/convergence_256_remove.txt"
+    COMPLETE_EAMT_COUNT: 512
+    LOG_PATH: "./backup/operation/convergence_512_remove.txt"
   roles:
     - parse_monitor_log
 # お片付け

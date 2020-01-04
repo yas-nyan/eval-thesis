@@ -1,4 +1,4 @@
-# clear log
+# # clear log
 - hosts: brs
   become: true
   roles:
@@ -25,8 +25,8 @@
 - hosts: localhost
   become: false
   vars:
-    COMPLETE_EAMT_COUNT: 257
-    LOG_PATH: "./backup/operation/convergence_256_add.txt"
+    COMPLETE_EAMT_COUNT: 513
+    LOG_PATH: "./backup/operation/convergence_512_add.txt"
   roles:
     - parse_monitor_log
 
