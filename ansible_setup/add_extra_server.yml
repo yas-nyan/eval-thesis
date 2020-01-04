@@ -1,0 +1,31 @@
+# # clear log
+- hosts: brs
+  become: true
+  roles:
+    - experiment_br
+
+# サーバー起動(しか出来ない)
+- hosts: pod1
+  become: true
+  vars:
+    CONTAINERS:
+      - NAME: extra01-01
+        ROUTER_ID: 100.64.255.1
+    STOPPED: no
+  roles:
+    - experiment_pod
+# get log
+- hosts: brs
+  become: true
+  vars:
+    PAUSED_SECONDS: 10
+  roles:
+    - experiment_br
+
+- hosts: localhost
+  become: false
+  vars:
+    COMPLETE_EAMT_COUNT: 1024
+    LOG_PATH: "./backup/operation/convergence_1024_add.txt"
+  roles:
+    - parse_monitor_log
