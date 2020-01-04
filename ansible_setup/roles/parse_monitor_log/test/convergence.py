@@ -75,4 +75,4 @@ if __name__ == "__main__":
 
     convergenced_time = calc_convergence(merged, COMPLETE_EAMT_COUNT)
 
-    print(convergenced_time)
+    print(convergenced_time[0])

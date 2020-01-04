@@ -5,3 +5,10 @@
 - name: show result
   debug:
     msg: "{{ result['stdout'] }}"
+
+- name: export result to file
+  lineinfile:
+    line: "{{ lookup('pipe','date +%Y/%m/%d/%H:%M:%S') }},{{ result['stdout'] }}"
+    dest: "{{ LOG_PATH }}"
+    create: yes
+  when: LOG_PATH is defined

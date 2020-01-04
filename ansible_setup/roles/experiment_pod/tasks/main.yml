@@ -60,6 +60,7 @@
     src: /home/ubuntu/docker-log.txt
     dest: "./backup/pod/docker-log.txt"
     flat: yes
+  ignore_errors: yes
 
 - name: delete old docker log
   file:
