@@ -1,5 +1,5 @@
 GOBGP_VERSION: 2.11.0
-SERVER_COUNT: 200
+SERVER_COUNT: 300
 ansible_user: ubuntu
 ntp_area: jp
 ntp_enabled: true
