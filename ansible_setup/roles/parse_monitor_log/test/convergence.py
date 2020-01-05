@@ -6,7 +6,7 @@ hosts = [f"br{str(i).zfill(2)}" for i in range(1, 31)]
 #filepaths = [ f"backup/deploy_test/{host}.csv" for host in hosts]
 #filepaths = [ f"backup/docker_512_minus1/{host}.csv" for host in hosts]
 filepaths = [
-    f"/Users/yas-nyan/Documents/works/eval-thesis/ansible_setup/backup/monitor/{host}.csv" for host in hosts]
+    f"./backup/monitor/{host}.csv" for host in hosts]
 
 
 def clean_and_addheader(filepath):
@@ -50,7 +50,7 @@ if __name__ == "__main__":
     # get args
     COMPLETE_EAMT_COUNT = sys.argv[1]
     # get docker started/stopped time
-    docker_log_path = "/Users/yas-nyan/Documents/works/eval-thesis/ansible_setup/backup/pod/docker-log.txt"
+    docker_log_path = "./backup/pod/docker-log.txt"
     standard_time = 0
     with open(docker_log_path, "r") as f:
         standard_time = int(f.read().strip())
