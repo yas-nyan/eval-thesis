@@ -25,7 +25,7 @@
 - hosts: localhost
   become: false
   vars:
-    COMPLETE_EAMT_COUNT: 1024
-    LOG_PATH: "./backup/operation/convergence_1024_add.txt"
+    COMPLETE_EAMT_COUNT: "{{ SERVER_COUNT + 1 }}"
+    LOG_PATH: "./backup/operation/convergence_{{ SERVER_COUNT }}_add.txt"
   roles:
     - parse_monitor_log
