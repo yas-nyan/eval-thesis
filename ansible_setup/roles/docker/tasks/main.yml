@@ -28,6 +28,10 @@
     state: present
     force_source: yes
 
+- name: remove all docker containers
+  shell: docker rm -f $(docker ps -a -q)
+  ignore_errors: true
+
 - name: crate injector containers with paused state
   docker_container:
     name: "{{ item.NAME }}"
