@@ -36,9 +36,9 @@ def experiment_remove():
 
 
 if __name__ == "__main__":
-    REPEAT = 10
+    REPEAT = 30
     SLEEP_TIME_RATIO = 1
-    COUNTS = [10, 100, 200, 300, 400, 500, 600]
+    COUNTS = [50,150,350,450,550]
 
     for count in COUNTS:
         logger.info(f"Start. Servers: {count}")

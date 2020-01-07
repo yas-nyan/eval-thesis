@@ -65,7 +65,6 @@ if __name__ == "__main__":
         selected["time"] = selected["time"] - standard_time
         selected.set_index("time")
         dfs.append(selected)
-
     merged = pd.concat(dfs, sort=True)
     # merged["time"] = pd.to_datetime(merged['time'].astype(float), unit='s')
     merged = merged.sort_values("time")

@@ -11,22 +11,22 @@
       - subnet: "{{ POD_NETWORK }}{{ POD_PREFIX }}"
     state: present
 
-- name: git clone new version
-  become: no
-  git:
-    repo: "git@github.com:yas-nyan/siit-client-docker.git"
-    dest: /home/ubuntu/siit-client-docker
-    version: origin/master
-    accept_hostkey: yes
-    force: yes
-- name: create image
-  docker_image:
-    build:
-      path: /home/ubuntu/siit-client-docker
-    name: siit_gobgpd
-    source: build
-    state: present
-    force_source: yes
+    #- name: git clone new version
+    #  become: no
+    #  git:
+    #    repo: "git@github.com:yas-nyan/siit-client-docker.git"
+    #    dest: /home/ubuntu/siit-client-docker
+    #    version: origin/master
+    #    accept_hostkey: yes
+    #    force: yes
+    #- name: create image
+    #  docker_image:
+    #    build:
+    #      path: /home/ubuntu/siit-client-docker
+    #    name: siit_gobgpd
+    #    source: build
+    #    state: present
+    #    force_source: yes
 
 - name: remove all docker containers
   shell: docker rm -f $(docker ps -a -q)
